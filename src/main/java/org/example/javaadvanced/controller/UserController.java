@@ -24,13 +24,13 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 
-    @PostMapping("save_user")
+    @PostMapping("/save_user")
     public String saveUser(@RequestBody User user) {
         userService.saveUser(user);
         return "User successfully saved";
     }
 
-    @PutMapping("update_user")
+    @PutMapping("/update_user")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
