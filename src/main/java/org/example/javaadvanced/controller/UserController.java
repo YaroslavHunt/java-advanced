@@ -19,15 +19,15 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/{email}")
+    public User getUserByEmail(@PathVariable String email) {
+        return userService.getUserByEmail(email);
+    }
+
     @PostMapping("save_user")
     public String saveUser(@RequestBody User user) {
         userService.saveUser(user);
         return "User successfully saved";
-    }
-
-    @GetMapping("/{email}")
-    public User getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email);
     }
 
     @PutMapping("update_user")

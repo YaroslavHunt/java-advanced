@@ -1,18 +1,37 @@
 package org.example.javaadvanced.service;
 
+import lombok.RequiredArgsConstructor;
 import org.example.javaadvanced.model.User;
+import org.example.javaadvanced.repository.UserRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface UserService {
+@Service
+@RequiredArgsConstructor
+public class UserService {
 
-    List<User> getAllUsers();
+    private UserRepository userRepository;
 
-    User saveUser(User user);
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
-    User getUserByEmail(String email);
+    public User getUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
 
-    User updateUser(User user);
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 
-    void deleteUser(String email);
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(String email) {
+        userRepository.deleteByEmail(email);
+    }
+
 
 }
